@@ -1,0 +1,25 @@
+# GraphQL Queries for Itineraries
+# Place this file in: apps/ui/src/graphql/queries/itineraries.graphql
+
+query GenerateItinerary($tripId: ID!, $preferences: String) {
+  generateItinerary(tripId: $tripId, preferences: $preferences) {
+    id
+    tripId
+    createdAt
+    days {
+      id
+      date
+      dayNumber
+      activities {
+        id
+        title
+        description
+        startTime
+        endTime
+        location
+        estimatedCost
+        currency
+      }
+    }
+  }
+}

@@ -1,0 +1,95 @@
+# GraphQL Queries for Trips
+# Place this file in: apps/ui/src/graphql/queries/trips.graphql
+
+query GetTrip($id: ID!) {
+  trip(id: $id) {
+    id
+    title
+    description
+    status
+    startDate
+    endDate
+    createdAt
+    updatedAt
+    destinations {
+      id
+      name
+      country
+      arrivalDate
+      departureDate
+      description
+    }
+    travellers {
+      id
+      name
+      email
+      role
+      joinedAt
+    }
+    itinerary {
+      id
+      tripId
+      createdAt
+      days {
+        id
+        date
+        dayNumber
+        activities {
+          id
+          title
+          description
+          startTime
+          endTime
+          location
+          estimatedCost
+          currency
+        }
+      }
+    }
+    budgetBreakdown {
+      totalBudget
+      currency
+      tier
+      categories {
+        name
+        amount
+        currency
+      }
+    }
+  }
+}
+
+query GetAllTrips {
+  trips {
+    id
+    title
+    description
+    status
+    startDate
+    endDate
+    createdAt
+    updatedAt
+    travellers {
+      id
+      name
+      email
+      role
+    }
+  }
+}
+
+query GetTripSummary($id: ID!) {
+  trip(id: $id) {
+    id
+    title
+    description
+    status
+    startDate
+    endDate
+    travellers {
+      id
+      name
+      role
+    }
+  }
+}

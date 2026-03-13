@@ -1,0 +1,13 @@
+# GraphQL Queries for Destinations
+# Place this file in: apps/ui/src/graphql/queries/destinations.graphql
+
+query SuggestDestinations($query: String!, $budgetTier: BudgetTier, $currency: String) {
+  suggestDestinations(query: $query, budgetTier: $budgetTier, currency: $currency) {
+    id
+    name
+    country
+    arrivalDate
+    departureDate
+    description
+  }
+}
